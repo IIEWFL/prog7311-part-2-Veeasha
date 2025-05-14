@@ -1,0 +1,91 @@
+﻿@model AgriEnergyConnect.Models.ProductFilterViewModel
+
+@{
+    ViewData["Title"] = "Employee Dashboard";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="display-6 text-success">👩‍🌾 Employee Dashboard</h2>
+        <a href="@Url.Action("RegisterFarmer", "User")" class="btn btn-outline-success">
+            <i class="bi bi-person-plus"></i> Add Farmer
+        </a>
+    </div>
+
+    <!-- Subheading -->
+    <div class="mb-4">
+        <h5 class="text-muted">📋 View and filter all products</h5>
+    </div>
+
+    <!-- Filter Form Card -->
+    <div class="card border-success mb-4 shadow-sm">
+        <div class="card-header bg-success text-white">
+            <strong>🔍 Filter Products</strong>
+        </div>
+        <div class="card-body">
+            <form method="get" class="row g-4">
+                <div class="col-md-3">
+                    <label for="FarmerName" class="form-label">Farmer Name</label>
+                    <input type="text" id="FarmerName" name="FarmerName" value="@Model.FarmerName" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label for="Category" class="form-label">Category</label>
+                    <input type="text" id="Category" name="Category" value="@Model.Category" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label for="StartDate" class="form-label">Start Date</label>
+                    <input type="date" id="StartDate" name="StartDate" value="@Model.StartDate?.ToString("yyyy-MM-dd")" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label for="EndDate" class="form-label">End Date</label>
+                    <input type="date" id="EndDate" name="EndDate" value="@Model.EndDate?.ToString("yyyy-MM-dd")" class="form-control" />
+                </div>
+                <div class="col-12 d-flex justify-content-end gap-3 mt-2">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-funnel"></i> Apply Filter
+                    </button>
+                    <a href="@Url.Action("EmployeeDashboard", "User")" class="btn btn-secondary">
+                        <i class="bi bi-arrow-counterclockwise"></i> Reset
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Product List -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">📦 Filtered Products</h5>
+        </div>
+        <div class="card-body p-0">
+            @if (Model.Products != null && Model.Products.Any())
+            {
+                <table class="table table-hover table-bordered m-0">
+                    <thead class="table-success text-center">
+                        <tr>
+                            <th>Farmer Name</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Production Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @foreach (var product in Model.Products)
+                        {
+                            <tr>
+                                <td>@(product.User?.FirstName + " " + product.User?.LastName)</td>
+                                <td>@product.Name</td>
+                                <td>@product.Category</td>
+                                <td>@product.ProductionDate.ToString("yyyy-MM-dd")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="p-4 text-center text-muted">No products found matching the filter criteria.</div>
+            }
+        </div>
+    </div>
+</div>

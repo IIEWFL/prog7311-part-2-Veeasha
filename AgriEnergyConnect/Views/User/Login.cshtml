@@ -1,0 +1,65 @@
+﻿@model AgriEnergyConnect.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+}
+
+
+
+<div class="min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md mt-12">
+        <div class="bg-white rounded-xl form-container overflow-hidden shadow-md">
+            <div class="hero-gradient py-6 px-6">
+                <h2 class="text-2xl font-bold text-white text-center">Login to view your profile</h2>
+                <p class="text-white/90 text-sm text-center mt-1">Join our community today</p>
+            </div>
+                <div class="p-6 space-y-4">
+                    <form method="post" asp-action="Login">
+                        <div asp-validation-summary="All" class="text-red-500 text-sm mb-4 error-message"></div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label for="Email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="Email" name="Email" class="form-control w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" value="@Model?.Email" placeholder="your@email.com" />
+                                <span asp-validation-for="Email" class="text-red-500 text-xs error-message"></span>
+                            </div>
+                            
+                            <div>
+                                <label for="Password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                                <input type="password" id="Password" name="Password" class="form-control w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="••••••••" />
+                                <span asp-validation-for="Password" class="text-red-500 text-xs error-message"></span>
+                            </div>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <input type="checkbox" class="form-check-input h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" id="showPassword" onclick="togglePasswordVisibility()">
+                                    <label class="ml-2 block text-sm text-gray-700" for="showPassword">Show Password</label>
+                               
+                            
+                            <button type="submit" class="w-full hero-gradient hover:opacity-90 text-white font-medium py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById("Password");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+
+</html>

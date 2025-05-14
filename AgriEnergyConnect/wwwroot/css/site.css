@@ -1,0 +1,303 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+/* Add smooth transition effects */
+.form-container {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    border-radius: 1.5rem; /* Giving a more rounded look */
+}
+
+/* Add rounded corners for all inputs and the button */
+.form-control,
+button[type="submit"],
+select {
+    border-radius: 1.25rem; /* More rounded input fields */
+}
+
+/* Gradient header styling */
+.hero-gradient {
+    background: linear-gradient(135deg, #4ade80 0%, #3b82f6 100%);
+    border-radius: 1.5rem 1.5rem 0 0; /* Make the header rounded at the top */
+}
+
+    /* Add rounded corners for the container */
+    .hero-gradient h2 {
+        border-top-left-radius: 1.5rem;
+        border-top-right-radius: 1.5rem;
+    }
+
+/* Button hover effect with a slight zoom and opacity */
+button[type="submit"] {
+    background: linear-gradient(135deg, #4ade80 0%, #3b82f6 100%);
+    transition: all 0.2s ease;
+    transform: scale(1);
+}
+
+    button[type="submit"]:hover {
+        opacity: 0.9;
+        transform: scale(1.03);
+    }
+
+/* Input focus effect */
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    border-color: #3b82f6;
+    border-radius: 1.25rem; /* Keep focus rounded */
+}
+
+/* Error message styling */
+.error-message {
+    color: #dc2626;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Add spacing and more rounded for the Show Password checkbox */
+input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.2);
+}
+
+    input[type="checkbox"]:checked {
+        background-color: #3b82f6; /* Highlight the checkbox when checked */
+    }
+
+/* Center align the text below the form */
+.text-center a {
+    color: #3b82f6;
+    font-weight: 500;
+}
+
+    .text-center a:hover {
+        color: #2563eb;
+    }
+
+/* Custom animation for error messages */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Ensure the whole page takes full height and centers content */
+.min-h-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full height of the screen */
+    padding: 1rem; /* Small padding around the edges */
+}
+
+/* Ensure the form is centered within its container */
+.w-full.max-w-md {
+    width: 100%;
+    max-width: 32rem; /* Set a max width for the form */
+    margin-top: 2rem; /* Add margin from top */
+}
+
+/* Center the form container within the available space */
+.form-container {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    border-radius: 1.5rem;
+    padding: 2rem;
+}
+
+/* Adjust the gradient header at the top of the form */
+.hero-gradient {
+    background: linear-gradient(135deg, #4ade80 0%, #3b82f6 100%);
+    border-radius: 1.5rem 1.5rem 0 0; /* Rounded at the top */
+}
+
+/* Ensure that all form fields are full-width */
+.form-control,
+select,
+button[type="submit"] {
+    width: 100%;
+    border-radius: 1.25rem; /* More rounded input fields */
+}
+
+/* Styling for the button on hover */
+button[type="submit"] {
+    background: linear-gradient(135deg, #4ade80 0%, #3b82f6 100%);
+    transition: all 0.2s ease;
+    transform: scale(1);
+}
+
+    button[type="submit"]:hover {
+        opacity: 0.9;
+        transform: scale(1.03);
+    }
+
+/* Focus effects for form fields */
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    border-color: #3b82f6;
+    border-radius: 1.25rem;
+}
+
+/* Make sure the text below the form is centered */
+.text-center {
+    text-align: center;
+}
+
+    /* Styling for links to sign in */
+    .text-center a {
+        color: #3b82f6;
+        font-weight: 500;
+    }
+
+        .text-center a:hover {
+            color: #2563eb;
+        }
+
+/* Space between form elements */
+.space-y-4 > * {
+    margin-bottom: 1rem;
+}
+
+/* Grid layout for Name and Surname fields */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+    .grid input {
+        width: 100%;
+    }
+
+/* Error message animation */
+.error-message {
+    color: #dc2626;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Custom animation for error messages */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Container & layout */
+.form-container {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease;
+}
+
+    .form-container:hover {
+        transform: scale(1.01);
+    }
+
+/* Gradient header */
+.hero-gradient {
+    background: linear-gradient(135deg, #4ade80 0%, #3b82f6 100%);
+}
+
+/* Input fields */
+.form-control {
+    transition: all 0.2s ease;
+}
+
+    .form-control:focus {
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        border-color: #3b82f6;
+    }
+
+/* Button */
+button[type="submit"] {
+    background: linear-gradient(135deg, #4ade80 0%, #3b82f6 100%);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+    button[type="submit"]:hover {
+        transform: scale(1.02);
+        opacity: 0.9;
+    }
+
+/* Error message */
+.error-message {
+    color: #dc2626;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Custom animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.nav-link:hover::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #4ade80;
+    margin-top: 2px;
+}
+
+
+body {
+    margin-bottom: 60px;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

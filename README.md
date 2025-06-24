@@ -8,13 +8,13 @@ A role-based agricultural data management prototype built for the Agri-Energy Co
 
 ## Technology Stack
 
-- **Frontend & View Engine**: Razor Views (ASP.NET Core MVC)
-- **Backend Language**: C# (.NET 6.0)
-- **Framework**: ASP.NET Core MVC
-- **ORM (Database Access)**: Entity Framework Core
-- **Database**: Microsoft SQL Server
-- **IDE**: Visual Studio Code (or Visual Studio 2022+)
-- **Authentication**: ASP.NET Identity (Role-based authentication)
+- **Frontend & View Engine**: Razor Views (ASP.NET Core MVC)  
+- **Backend Language**: C# (.NET 6.0)  
+- **Framework**: ASP.NET Core MVC  
+- **ORM (Database Access)**: Entity Framework Core  
+- **Database**: Microsoft SQL Server  
+- **IDE**: Visual Studio Code (or Visual Studio 2022+)  
+- **Authentication**: ASP.NET Identity (Role-based authentication)  
 
 ---
 
@@ -31,21 +31,21 @@ This prototype serves as the foundation for broader platform features such as a 
 ## Functional Requirements Implemented
 
 ### 👨‍🌾 Farmer
-- Secure login with role-based access.
-- Add new agricultural product entries, including:
+- Secure login with role-based access  
+- Add new agricultural product entries:
   - Product name
   - Product category (e.g., Vegetables, Grains, Livestock)
-  - Production date
-- View personal product history and details.
+  - Production date  
+- View personal product history and details  
 
 ### 🧑‍💼 Employee
-- Secure login with administrative privileges.
-- Register new farmer profiles with basic demographic and account information.
-- Access a list of all registered farmers.
-- View products associated with any farmer.
-- Apply filters to view products based on:
-  - Product type
-  - Production date range
+- Secure login with administrative privileges  
+- Register new farmer profiles with demographic and account data  
+- Access a list of all registered farmers  
+- View products associated with any farmer  
+- Filter product data by:
+  - Product category
+  - Production date range  
 
 ---
 
@@ -53,141 +53,119 @@ This prototype serves as the foundation for broader platform features such as a 
 
 ### 📁 Project Structure
 
-├── Models/ # Data models: Farmer.cs, Product.cs, User.cs
-├── Controllers/ # Business logic controllers
-├── Views/ # Razor pages for UI (grouped by role)
-├── Data/ # ApplicationDbContext and DB configuration
-├── Migrations/ # EF Core migration history
-├── wwwroot/ # Static assets (CSS, JS)
-├── Program.cs # App startup configuration
-├── appsettings.json # Connection strings and environment settings
-└── README.md # Documentation
-
-markdown
-Copy
-Edit
+```
+├── Models/              # Data models: Farmer.cs, Product.cs, User.cs
+├── Controllers/         # Business logic controllers
+├── Views/               # Razor pages for UI (grouped by role)
+├── Data/                # ApplicationDbContext and DB configuration
+├── Migrations/          # EF Core migration history
+├── wwwroot/             # Static assets (CSS, JS)
+├── Program.cs           # App startup configuration
+├── appsettings.json     # Connection strings and environment settings
+└── README.md            # Documentation
+```
 
 ### 🧠 Key Design Decisions
-- **Role-based Authorization**: Implemented using ASP.NET Identity to ensure clean separation of concerns.
-- **Entity Relationships**: Products are tied to Farmers, and Users are associated with one of the two roles.
-- **Validation**: Built-in model validation and Razor form validation to enforce input correctness.
-- **Scalability**: The system is designed to support future modules (analytics, IoT integration, funding alerts).
+
+- **Role-based Authorization** using ASP.NET Identity  
+- **Relational Data Models** connecting Farmers and Products  
+- **Scalable Architecture** prepared for analytics, API integration, and additional roles  
+- **Validation** via data annotations and UI logic  
 
 ---
 
 ## Database Schema Overview
 
-- `Users` (base table for authentication)
-- `Farmers` (extends users with domain-specific fields)
-- `Products` (foreign key to Farmers)
-- Relationships enforced through Entity Framework with code-first migrations
+- `Users`: Authentication credentials and roles  
+- `Farmers`: Farmer-specific information  
+- `Products`: Tied to individual farmers via foreign keys  
+- Relationships are enforced using Entity Framework Core with a normalized schema  
 
-### Sample Command to Apply Migrations:
-```bash
-dotnet ef database update
-Installation & Setup Instructions
-Prerequisites
-.NET 6.0 SDK
+---
 
-SQL Server (LocalDB, Express, or containerized instance)
+## Installation & Setup Instructions
 
-Visual Studio Code (with C# and EF Core extensions) or Visual Studio 2022+
+### Requirements
 
-Run Instructions
-Clone or download the repository.
+- .NET 6.0 SDK or higher  
+- SQL Server (LocalDB or Express edition)  
+- Visual Studio Code (with C# plugin) or Visual Studio 2022+  
 
-Open the folder in Visual Studio Code or Visual Studio.
+### Steps to Run
 
-Restore all dependencies:
+1. Open the solution folder in Visual Studio or Visual Studio Code  
+2. Restore project dependencies  
+3. Apply database migrations to initialize the schema  
+4. Run the application and navigate to:  
+   `https://localhost:5001`
 
-bash
-Copy
-Edit
-dotnet restore
-Apply migrations and create the database:
+---
 
-bash
-Copy
-Edit
-dotnet ef database update
-Run the application:
+## Sample Login Credentials
 
-bash
-Copy
-Edit
-dotnet run
-Navigate to:
+| Role     | Email                | Password     |
+|----------|----------------------|--------------|
+| Farmer   | farmer@test.com      | Farmer@123   |
+| Employee | employee@test.com    | Employee@123 |
 
-arduino
-Copy
-Edit
-https://localhost:5001
-Sample Login Credentials
-Role	Email	Password
-Farmer	farmer@test.com	Farmer@123
-Employee	employee@test.com	Employee@123
+---
 
-Validation & Security
-Input Validation: Enforced through Data Annotations ([Required], [StringLength], [DataType], etc.)
+## Validation & Security
 
-Security:
+- Built-in form validation for all user input  
+- Backend model validation using `[Required]`, `[StringLength]`, `[DataType]`, etc.  
+- Role-based access control ensures each user accesses only permitted features  
+- Passwords stored securely using ASP.NET Identity encryption  
 
-Passwords are hashed and stored securely.
+---
 
-Users are authenticated via cookie-based login.
+## User Interface Design
 
-Role-based access control ensures unauthorized access is prevented.
+- Razor Views with clean, semantic HTML  
+- Responsive layout optimized for both desktop and mobile  
+- Navigation and UI elements adapt based on login role (Farmer vs. Employee)  
+- Designed with accessibility and clarity in mind  
 
-User Interface Design
-Built using Razor Pages with Bootstrap for layout and styling.
+---
 
-Fully responsive: optimized for both desktop and mobile use cases.
+## Testing and Quality Assurance
 
-UI routes and navigation menus adjust dynamically based on user role.
+- Developed iteratively using Agile methodology  
+- Functionality tested during and after implementation  
+- Manual UX testing done with sample users  
+- Code is modular, commented, and follows SOLID principles where applicable  
 
-Error feedback and field hints included to improve usability and reduce data entry mistakes.
+---
 
-Testing and Quality Assurance
-Features were developed and tested iteratively using Agile principles.
+## Limitations and Future Work
 
-Manual testing was performed for:
+- Currently supports only two user roles  
+- No analytics, reporting, or API endpoints included yet  
+- Future improvements may include:
+  - Integration with a renewable energy product marketplace  
+  - IoT sensor compatibility for smart farming  
+  - Grant application tracking and notifications  
+  - Admin dashboards and visual reports  
 
-Data creation and retrieval workflows
+---
 
-Authentication and role restrictions
+## Educational Context
 
-Form validation and error states
+This project was created for submission in the **PROG7311** module offered by **The Independent Institute of Education (IIE)**. The primary objective was to demonstrate practical competency in:
 
-Code is logically structured and includes XML comments for maintainability.
+- Full-stack web application development  
+- Secure, role-based data access  
+- Database integration and object-relational mapping  
+- Agile development and documentation standards  
 
-Limitations and Next Steps
-While this prototype fulfills core CRUD functionality, the following features are planned for future iterations:
+---
 
-Integration with a green energy product marketplace.
+## Author & Contact
 
-Farmer dashboard with analytics and summaries.
+**Veeasha Packirisamy**  
+Student ID: ST10397833  
+Module: PROG7311  
+Academic Year: 2025  
 
-Support for funding application modules.
+---
 
-RESTful API endpoints for mobile or third-party integration.
-
-Full deployment pipeline using Docker and CI/CD tools (e.g., GitHub Actions).
-
-Educational Context
-This project was developed as part of the PROG7311 module for submission to The Independent Institute of Education (IIE) in 2025. The prototype was built to demonstrate competence in:
-
-MVC architecture
-
-Secure database integration
-
-Enterprise software design patterns
-
-Agile and DevOps alignment
-
-Practical UI/UX implementation
-
-Author & Contact
-Veeasha Packirisamy
-Student ID: ST10397833
-Module: PROG7311 – Enterprise Software Development
-Submission Year: 2025

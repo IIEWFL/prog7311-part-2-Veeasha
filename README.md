@@ -1,97 +1,193 @@
-# Agri-Energy Connect – Farmer Product Management Prototype
+# Agri-Energy Connect – Farmer Product Management System (Prototype)
 
 ## Project Title
-**Farmer Product Management System (Prototype)**  
-Part of the Agri-Energy Connect digital ecosystem – developed for PROG7311.
+**Farmer Product Management System**  
+A role-based agricultural data management prototype built for the Agri-Energy Connect platform as part of the PROG7311 Practical Assignment.
+
+---
 
 ## Technology Stack
-- **Framework**: ASP.NET Core MVC  
-- **Language**: C#  
-- **ORM**: Entity Framework Core  
-- **Database**: SQL Server  
-- **Development Tool**: Visual Studio Code  
 
-## Project Description
-This prototype serves as a foundational component of the Agri-Energy Connect platform. It demonstrates how agricultural data—specifically products managed by farmers—can be captured, stored, and displayed through a secure, role-based web interface. Built using the Model-View-Controller (MVC) pattern, the application supports two user roles: **Farmers** and **Employees**, each with tailored access to the system.
+- **Frontend & View Engine**: Razor Views (ASP.NET Core MVC)
+- **Backend Language**: C# (.NET 6.0)
+- **Framework**: ASP.NET Core MVC
+- **ORM (Database Access)**: Entity Framework Core
+- **Database**: Microsoft SQL Server
+- **IDE**: Visual Studio Code (or Visual Studio 2022+)
+- **Authentication**: ASP.NET Identity (Role-based authentication)
 
-The prototype emphasizes user authentication, relational data integrity, and role-specific functionality. It simulates real-world interactions between farmers, agricultural support employees, and the platform, forming the base for a scalable digital agriculture and renewable energy integration tool.
+---
 
-## Features by User Role
+## Project Overview
 
-### Farmer
-- Login with a secure farmer account.
-- Add new agricultural products, including name, category, and production date.
-- View a personal list of products submitted.
+This prototype represents the core module of a larger envisioned ecosystem, **Agri-Energy Connect**, which aims to bridge South African agriculture with renewable energy solutions.
 
-### Employee
-- Login with employee credentials.
-- Register new farmer profiles by capturing essential details.
-- View all farmers and their products.
-- Filter product data by category and production date range.
+The module simulates real-world data management by allowing two types of authenticated users—**Farmers** and **Employees**—to perform role-specific operations. Farmers can manage their own products, while Employees have administrative access to farmer records and broader visibility across the platform. The design leverages the **Model-View-Controller (MVC)** pattern and is built with scalability and modularity in mind.
 
-## Application Architecture
-- **Models**: Define core data structures (Farmer, Product, User).
-- **Controllers**: Handle business logic and route user requests appropriately.
-- **Views**: Razor Pages render dynamic HTML based on user role and data.
-- **Database**: SQL Server stores relational data for products, users, and farmers.
-- **Entity Framework Core**: Manages database operations through the `ApplicationDbContext`.
+This prototype serves as the foundation for broader platform features such as a green energy marketplace, sustainability resources, and funding collaboration tools.
 
-## Setup Instructions
+---
 
-### Requirements
-- .NET 6.0 SDK or higher
-- SQL Server (local instance or container)
-- Visual Studio Code or Visual Studio 2022+
+## Functional Requirements Implemented
 
-### Running the Project
-1. Clone or download the project.
-2. Open the project folder in Visual Studio Code.
-3. Restore dependencies:
-dotnet restore
+### 👨‍🌾 Farmer
+- Secure login with role-based access.
+- Add new agricultural product entries, including:
+  - Product name
+  - Product category (e.g., Vegetables, Grains, Livestock)
+  - Production date
+- View personal product history and details.
 
-lua
+### 🧑‍💼 Employee
+- Secure login with administrative privileges.
+- Register new farmer profiles with basic demographic and account information.
+- Access a list of all registered farmers.
+- View products associated with any farmer.
+- Apply filters to view products based on:
+  - Product type
+  - Production date range
+
+---
+
+## Architectural Design
+
+### 📁 Project Structure
+
+├── Models/ # Data models: Farmer.cs, Product.cs, User.cs
+├── Controllers/ # Business logic controllers
+├── Views/ # Razor pages for UI (grouped by role)
+├── Data/ # ApplicationDbContext and DB configuration
+├── Migrations/ # EF Core migration history
+├── wwwroot/ # Static assets (CSS, JS)
+├── Program.cs # App startup configuration
+├── appsettings.json # Connection strings and environment settings
+└── README.md # Documentation
+
+markdown
 Copy
 Edit
-4. Apply migrations and create the database:
+
+### 🧠 Key Design Decisions
+- **Role-based Authorization**: Implemented using ASP.NET Identity to ensure clean separation of concerns.
+- **Entity Relationships**: Products are tied to Farmers, and Users are associated with one of the two roles.
+- **Validation**: Built-in model validation and Razor form validation to enforce input correctness.
+- **Scalability**: The system is designed to support future modules (analytics, IoT integration, funding alerts).
+
+---
+
+## Database Schema Overview
+
+- `Users` (base table for authentication)
+- `Farmers` (extends users with domain-specific fields)
+- `Products` (foreign key to Farmers)
+- Relationships enforced through Entity Framework with code-first migrations
+
+### Sample Command to Apply Migrations:
+```bash
 dotnet ef database update
+Installation & Setup Instructions
+Prerequisites
+.NET 6.0 SDK
 
-markdown
+SQL Server (LocalDB, Express, or containerized instance)
+
+Visual Studio Code (with C# and EF Core extensions) or Visual Studio 2022+
+
+Run Instructions
+Clone or download the repository.
+
+Open the folder in Visual Studio Code or Visual Studio.
+
+Restore all dependencies:
+
+bash
 Copy
 Edit
-5. Run the application:
+dotnet restore
+Apply migrations and create the database:
+
+bash
+Copy
+Edit
+dotnet ef database update
+Run the application:
+
+bash
+Copy
+Edit
 dotnet run
+Navigate to:
 
-markdown
+arduino
 Copy
 Edit
-6. Open your browser at:
 https://localhost:5001
+Sample Login Credentials
+Role	Email	Password
+Farmer	farmer@test.com	Farmer@123
+Employee	employee@test.com	Employee@123
 
-pgsql
-Copy
-Edit
+Validation & Security
+Input Validation: Enforced through Data Annotations ([Required], [StringLength], [DataType], etc.)
 
-## Sample Login Credentials
+Security:
 
-| Role     | Email                | Password     |
-|----------|----------------------|--------------|
-| Farmer   | farmer@test.com      | Farmer@123   |
-| Employee | employee@test.com    | Employee@123 |
+Passwords are hashed and stored securely.
 
-## Validation and Error Handling
-The application includes both server-side and client-side validation for input fields (e.g., required fields, date formats). It uses ASP.NET Core Identity for secure login and enforces role-based access restrictions. Errors are handled gracefully to ensure a smooth user experience and prevent application crashes.
+Users are authenticated via cookie-based login.
 
-## User Interface Design
-The user interface was developed using Razor Views and Bootstrap styling to ensure responsive layouts. The design supports both desktop and mobile usage. Farmers and employees each access distinct views that match their permissions and intended workflows.
+Role-based access control ensures unauthorized access is prevented.
 
-## Testing and Development Approach
-The application was built iteratively using Agile principles. Core features were developed and tested individually, with emphasis on user experience. Feedback from test users was incorporated to improve navigation, layout clarity, and data visibility.
+User Interface Design
+Built using Razor Pages with Bootstrap for layout and styling.
 
-## Conclusion
-This prototype meets the core objectives for the Agri-Energy Connect proof of concept. It demonstrates a functional, secure, and extendable system for managing farmers and their agricultural products. Future iterations will include expanded role support, analytics dashboards, and integration with green energy project modules.
+Fully responsive: optimized for both desktop and mobile use cases.
 
-## Author
-**Veeasha Packirisamy**  
-Student ID: ST10397833  
-Module: PROG7311 – Enterprise Software Development  
+UI routes and navigation menus adjust dynamically based on user role.
+
+Error feedback and field hints included to improve usability and reduce data entry mistakes.
+
+Testing and Quality Assurance
+Features were developed and tested iteratively using Agile principles.
+
+Manual testing was performed for:
+
+Data creation and retrieval workflows
+
+Authentication and role restrictions
+
+Form validation and error states
+
+Code is logically structured and includes XML comments for maintainability.
+
+Limitations and Next Steps
+While this prototype fulfills core CRUD functionality, the following features are planned for future iterations:
+
+Integration with a green energy product marketplace.
+
+Farmer dashboard with analytics and summaries.
+
+Support for funding application modules.
+
+RESTful API endpoints for mobile or third-party integration.
+
+Full deployment pipeline using Docker and CI/CD tools (e.g., GitHub Actions).
+
+Educational Context
+This project was developed as part of the PROG7311 module for submission to The Independent Institute of Education (IIE) in 2025. The prototype was built to demonstrate competence in:
+
+MVC architecture
+
+Secure database integration
+
+Enterprise software design patterns
+
+Agile and DevOps alignment
+
+Practical UI/UX implementation
+
+Author & Contact
+Veeasha Packirisamy
+Student ID: ST10397833
+Module: PROG7311 – Enterprise Software Development
 Submission Year: 2025

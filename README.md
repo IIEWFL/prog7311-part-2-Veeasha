@@ -1,119 +1,97 @@
-```markdown
+# Agri-Energy Connect – Farmer Product Management Prototype
 
-🌾 Farmer Product Management System – Agri-Energy Connect Prototype
-Built with ASP.NET Core MVC | C# | Entity Framework Core | SQL Server
+## Project Title
+**Farmer Product Management System (Prototype)**  
+Part of the Agri-Energy Connect digital ecosystem – developed for PROG7311.
 
-📘 Project Overview
-This prototype forms the foundation of a Farmer Product Management System for the broader Agri-Energy Connect platform. It showcases how relational agricultural data can be securely managed using the MVC architectural pattern, complete with role-based access control for Farmers and Employees. The goal is to demonstrate the feasibility of scalable, real-world data management and interaction within a green-tech-enabled farming ecosystem.
+## Technology Stack
+- **Framework**: ASP.NET Core MVC  
+- **Language**: C#  
+- **ORM**: Entity Framework Core  
+- **Database**: SQL Server  
+- **Development Tool**: Visual Studio Code  
 
-🧱 Technology Stack
-Framework: ASP.NET Core MVC
+## Project Description
+This prototype serves as a foundational component of the Agri-Energy Connect platform. It demonstrates how agricultural data—specifically products managed by farmers—can be captured, stored, and displayed through a secure, role-based web interface. Built using the Model-View-Controller (MVC) pattern, the application supports two user roles: **Farmers** and **Employees**, each with tailored access to the system.
 
-Language: C#
+The prototype emphasizes user authentication, relational data integrity, and role-specific functionality. It simulates real-world interactions between farmers, agricultural support employees, and the platform, forming the base for a scalable digital agriculture and renewable energy integration tool.
 
-ORM: Entity Framework Core
+## Features by User Role
 
-Database: SQL Server
+### Farmer
+- Login with a secure farmer account.
+- Add new agricultural products, including name, category, and production date.
+- View a personal list of products submitted.
 
-IDE: Visual Studio Code
+### Employee
+- Login with employee credentials.
+- Register new farmer profiles by capturing essential details.
+- View all farmers and their products.
+- Filter product data by category and production date range.
 
-📁 Folder Structure
-```
-├── Models/ # Entity classes (Farmer.cs, Product.cs, User.cs)
-├── Controllers/ # Application logic (FarmerController, EmployeeController, etc.)
-├── Views/ # Razor Views per role and function
-├── Data/ # Database context (ApplicationDbContext)
-├── wwwroot/ # Static files (CSS, JS)
-├── Program.cs / Startup.cs
-└── appsettings.json # Configuration file
-```
+## Application Architecture
+- **Models**: Define core data structures (Farmer, Product, User).
+- **Controllers**: Handle business logic and route user requests appropriately.
+- **Views**: Razor Pages render dynamic HTML based on user role and data.
+- **Database**: SQL Server stores relational data for products, users, and farmers.
+- **Entity Framework Core**: Manages database operations through the `ApplicationDbContext`.
 
-👥 User Roles & Features
-👨‍🌾 Farmer
-🔐 Secure login
+## Setup Instructions
 
-➕ Add new product (Name, Category, Production Date)
+### Requirements
+- .NET 6.0 SDK or higher
+- SQL Server (local instance or container)
+- Visual Studio Code or Visual Studio 2022+
 
-📄 View personal product listings
-
-🧑‍💼 Employee
-🔐 Secure login
-
-➕ Register new farmer profiles
-
-🔍 View all farmers and their products
-
-📊 Filter products by category and production date range
-
-🗄️ Database Integration
-Uses Entity Framework Core for database interaction
-
-Backed by SQL Server
-
-Designed with a relational schema for Users, Farmers, and Products
-
-Comes with preloaded sample data for testing
-
-💾 Database Setup
-```bash
-dotnet ef database update
-```
-
-🚀 Running the Application Locally
-Make sure .NET 6.0 SDK or higher is installed.
-
-🛠️ Steps:
-Open the project in Visual Studio Code
-
-Restore dependencies:
-```bash
+### Running the Project
+1. Clone or download the project.
+2. Open the project folder in Visual Studio Code.
+3. Restore dependencies:
 dotnet restore
-```
 
-Run the application:
-```bash
+lua
+Copy
+Edit
+4. Apply migrations and create the database:
+dotnet ef database update
+
+markdown
+Copy
+Edit
+5. Run the application:
 dotnet run
-```
 
-Navigate to:
+markdown
+Copy
+Edit
+6. Open your browser at:
 https://localhost:5001
 
-✅ Data Validation & Error Handling
-✔️ Form validation on both frontend (Razor) and backend (Model attributes)
+pgsql
+Copy
+Edit
 
-🔐 Role-based authorization per user type
+## Sample Login Credentials
 
-❌ Graceful error handling prevents system crashes or unauthorized access
+| Role     | Email                | Password     |
+|----------|----------------------|--------------|
+| Farmer   | farmer@test.com      | Farmer@123   |
+| Employee | employee@test.com    | Employee@123 |
 
-🖥️ User Interface Design
-Clean and intuitive UI using Razor views
+## Validation and Error Handling
+The application includes both server-side and client-side validation for input fields (e.g., required fields, date formats). It uses ASP.NET Core Identity for secure login and enforces role-based access restrictions. Errors are handled gracefully to ensure a smooth user experience and prevent application crashes.
 
-Fully responsive design – accessible on desktop and mobile
+## User Interface Design
+The user interface was developed using Razor Views and Bootstrap styling to ensure responsive layouts. The design supports both desktop and mobile usage. Farmers and employees each access distinct views that match their permissions and intended workflows.
 
-Easy-to-navigate layout tailored for each user role
+## Testing and Development Approach
+The application was built iteratively using Agile principles. Core features were developed and tested individually, with emphasis on user experience. Feedback from test users was incorporated to improve navigation, layout clarity, and data visibility.
 
-🔐 Sample Login Credentials
-Role	Email	Password
-Farmer	`farmer@test.com`	`Farmer@123`
-Employee	`employee@test.com`	`Employee@123`
+## Conclusion
+This prototype meets the core objectives for the Agri-Energy Connect proof of concept. It demonstrates a functional, secure, and extendable system for managing farmers and their agricultural products. Future iterations will include expanded role support, analytics dashboards, and integration with green energy project modules.
 
-🧪 Development & Testing
-✔️ Developed iteratively using Agile principles
-
-🧑‍💻 Each module tested upon implementation
-
-🧪 UX tested with mock users to improve usability
-
-📝 Well-commented and organized codebase
-
-📄 License & Attribution
-This prototype was developed as part of the PROG7311 POE submission for academic purposes.
-All rights reserved © 2025 – The Independent Institute of Education (Pty) Ltd.
-
-🙋‍♀️ Maintainer
-Veeasha Packirisamy
-Student ID: ST10397833
-Module: PROG7311 – Enterprise Software Development
-```
-
-
+## Author
+**Veeasha Packirisamy**  
+Student ID: ST10397833  
+Module: PROG7311 – Enterprise Software Development  
+Submission Year: 2025

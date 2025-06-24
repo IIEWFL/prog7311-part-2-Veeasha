@@ -199,4 +199,5 @@ namespace AgriEnergyConnect.Controllers
     }
 }
 
-
+//https://chatgpt.com/ 
+//stackoverflow.com

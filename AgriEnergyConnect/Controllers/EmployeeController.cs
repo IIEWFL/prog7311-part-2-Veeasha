@@ -53,3 +53,4 @@ namespace AgriEnergyConnect.Controllers
 
     }
 }
+//Rick-Anderson (2024). Role-based authorization in ASP.NET Core. [online] Microsoft.com. Available at: https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles?view=aspnetcore-9.0.

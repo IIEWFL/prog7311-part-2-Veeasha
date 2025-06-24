@@ -159,7 +159,10 @@ This project was created for submission in the **PROG7311** module offered by **
 - Agile development and documentation standards  
 
 ---
+## AI Declaration
+OpenAI’s ChatGPT was used to assist with the development of the Agri-Energy Connect farmers’ prototype. It supported the project by helping to draft and refine documentation, explain technical concepts, and align the work with academic outcomes. All AI-generated content was reviewed and adapted by the author to ensure accuracy and relevance.
 
+---
 ## Author & Contact
 
 **Veeasha Packirisamy**  
